@@ -19,7 +19,7 @@ const Headers = () => {
                 
                     <NavLink style={{color:"white"}} to="/">Heading</NavLink>
                 </Typography>
-                <Box sx={{display:{xs:"none",sm:"block"}}}>
+                <Box >
                     <ul className="navigation">
 {login?<><li style={{fontSize:"20px"}} onClick={loginHandler}>Logout</li><li><NavLink style={{fontSize:"20px",color:"white"}} to="/Cart">Cart</NavLink></li></>:<li onClick={loginHandler}>Login</li>}
 
