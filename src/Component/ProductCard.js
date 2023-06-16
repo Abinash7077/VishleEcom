@@ -2,10 +2,12 @@ import React from 'react';
 import { Card,CardActionArea,CardMedia,CardContent,CardActions, Button,Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addCartItem } from '../Redux/productSlide';
+import { toast } from 'react-hot-toast';
 
 const ProductCard = ({id,category,desc,price,image,title}) => {
     const dispatch = useDispatch()
     const handleAddCartProduct = (e) => {
+      alert("item added to cart")
         dispatch(addCartItem({
           _id : id,
           name : title,
