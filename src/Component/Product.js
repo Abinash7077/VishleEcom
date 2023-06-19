@@ -5,12 +5,28 @@ import ProductCard from './ProductCard';
 
 const Product = () => {
   const[data,setData]=useState([])
+  
  useEffect(()=>{
   fetch('https://fakestoreapi.com/products')
   .then(res=>res.json())
   .then(json=> 
   setData(json))
  },[])
+ const [noOfElements,setNoOfElements]=useState(6)
+ const slice=data.slice(0,noOfElements)
+ const loadMore=()=>{
+  
+   setNoOfElements(noOfElements+3)
+   console.log(noOfElements)
+   console.log(data.length,"s")
+   console.log(slice.length,data.length)
+   if(slice.length===data.length){
+    alert("no product is there")
+    console.log("no product left")
+  
+   }
+ }
+
  
             
   return (
@@ -21,7 +37,7 @@ const Product = () => {
 
     <Container className='Product_container'sx={{display:"flex",justifyContent:"space-between",alignItems:"center",}}>
 {
-  data.map((item)=>(
+  slice.map((item)=>(
 
     <ProductCard
     key={item.id}
@@ -38,7 +54,9 @@ const Product = () => {
 }
 
 
+
     </Container>
+    <button onClick={loadMore} style={{padding:"5px 15px"}}>ViewMore</button>
 
    </Box>
   );
